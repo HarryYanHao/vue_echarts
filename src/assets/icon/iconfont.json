@@ -1,0 +1,86 @@
+{
+  "id": "3291954",
+  "name": "echart",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2552067",
+      "name": "介绍",
+      "font_class": "jieshao",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "1125577",
+      "name": "工作经验",
+      "font_class": "gongzuojingyan",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "1315599",
+      "name": "学校",
+      "font_class": "xuexiao",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "3764362",
+      "name": "定位",
+      "font_class": "weibiaoti-",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "4488851",
+      "name": "技能标签",
+      "font_class": "jinengbiaoqian",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "526000",
+      "name": "男",
+      "font_class": "nansheng",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "975376",
+      "name": "名称",
+      "font_class": "name",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "1817709",
+      "name": "qq",
+      "font_class": "qq",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "4552970",
+      "name": "邮箱",
+      "font_class": "youxiang",
+      "unicode": "e908",
+      "unicode_decimal": 59656
+    },
+    {
+      "icon_id": "11372702",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e8b9",
+      "unicode_decimal": 59577
+    },
+    {
+      "icon_id": "11372714",
+      "name": "微博",
+      "font_class": "weibo",
+      "unicode": "e8bb",
+      "unicode_decimal": 59579
+    }
+  ]
+}
