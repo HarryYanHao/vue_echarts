@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/pig1.jpeg" style="width:30%">
     <Nav></Nav>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <HelloWorld msg="MW大傻逼"/> -->
+    <h1>MW大傻逼</h1>
   </div>
 </template>
 
