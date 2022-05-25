@@ -10,15 +10,16 @@ import 'viewerjs/dist/viewer.css'
 import 'animate.css'
 import anime from 'animejs'
 import './assets/icon/iconfont.css'
+import VueParticles from 'vue-particles'
 
 
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 Vue.prototype.$viewer = Viewer
-Vue.prototype.$axios.defaults.baseURL = 'http://192.168.5.113:8188/'
+Vue.prototype.$axios.defaults.baseURL = 'http://127.0.0.1:8188/'
 Vue.prototype.$anime = anime
-Vue.prototype.$blog_host = 'http://225f70i583.qicp.vip'
-Vue.prototype.$blog_port = '37897'
+Vue.prototype.$blog_host = 'http://127.0.0.1'
+Vue.prototype.$blog_port = '8889'
 
 Vue.config.productionTip = false
 Vue.config.silent = false
@@ -27,6 +28,8 @@ Vue.config.silent = false
 
 Vue.use(ElementUI);
 Vue.use(Viewer);
+Vue.use(VueParticles);
+
 
 
 Viewer.setDefaults({
