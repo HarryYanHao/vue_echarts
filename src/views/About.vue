@@ -125,7 +125,7 @@ import Nav from '@/components/Nav.vue'
 		},
 		mounted() {
 			this.main_show = true
-			this.isMobile();
+			this.is_mobile = this.$utils.isMobile();
 			if(this.is_mobile){
 				this.block1 = this.block2  = {}
 				this.block1_div_style = this.block2_div_style = this.block3_div_style = {'margin':'1vh 3vh'}
@@ -134,11 +134,6 @@ import Nav from '@/components/Nav.vue'
 		methods:{
 			avatar_show(){
 
-			},
-			isMobile(){
-				this.is_mobile = navigator.userAgent.match(
-/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
-				return this.is_mobile
 			},
 			nextAvatar(){
 				this.$nextTick(()=>{
@@ -157,7 +152,7 @@ import Nav from '@/components/Nav.vue'
 			this.avatarStyle = {}
 			let translate = this.show?-(document.body.clientWidth/2 - 250):0
 			console.log(translate)
-			if(this.isMobile()){
+			if(this.is_mobile){
 				if(translate == 0){
 					this.avatarStyle = {display:'contents'}	
 				}else{

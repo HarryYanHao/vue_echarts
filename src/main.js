@@ -11,6 +11,8 @@ import 'animate.css'
 import anime from 'animejs'
 import './assets/icon/iconfont.css'
 import VueParticles from 'vue-particles'
+import utils from './utils/utils'
+
 
 
 Vue.prototype.$echarts = echarts
@@ -20,6 +22,7 @@ Vue.prototype.$axios.defaults.baseURL = 'http://127.0.0.1:8188/'
 Vue.prototype.$anime = anime
 Vue.prototype.$blog_host = 'http://127.0.0.1'
 Vue.prototype.$blog_port = '8889'
+Vue.prototype.$utils = utils
 
 Vue.config.productionTip = false
 Vue.config.silent = false
