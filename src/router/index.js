@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta:{title:'Home'}
+    meta:{title:'Home',keepAlive:true}
   },
   {
     path: '/about',
@@ -18,7 +18,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta:{title:'About Me'}
+    meta:{title:'About Me',keepAlive:false}
   },
   {
     path: '/echarts',
@@ -27,7 +27,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/ECharts.vue'),
-    meta:{title:'ECharts'}
+    meta:{title:'ECharts',keepAlive:false}
   },
    {
     path: '/gallery',
@@ -36,7 +36,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Gallery.vue'),
-    meta:{title:"Harry's Gallery"}
+    meta:{title:"Harry's Gallery",keepAlive:false}
   },
 ]
 

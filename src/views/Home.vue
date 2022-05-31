@@ -31,9 +31,10 @@
       <full-calendar
         :config="config"
         :events="events"
+        ref = 'calendar'
       ></full-calendar>
     </div>
-  <el-dialog title="新建日程" :visible.sync="dialogFormVisible" width='30%'>
+  <el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible" width='30%'>
   <el-form :model="form">
      <div class="block">
     <div>
@@ -48,13 +49,13 @@
    </div>
     <div>
      <span class="demonstration">日程简介</span>
-      <el-input v-model="scheduleTitle" autocomplete="off" size="medium" maxlength="30"
+      <el-input v-model="scheduleTitle" autocomplete="off" size="medium" maxlength="30" class='schedule'
   placeholder="请输入内容"></el-input>
     </div>
   </div>
   </el-form>
   <div slot="footer" class="dialog-footer">
-    <el-button @click="dialogFormVisible = false">取 消</el-button>
+    <el-button @click="cancelClick">取 消</el-button>
     <el-button type="primary" @click="addEvent">确 定</el-button>
   </div>
 </el-dialog>
@@ -67,7 +68,7 @@
 import Nav from '@/components/Nav.vue'
 import FlipClock from 'kuan-vue-flip-clock'
 import  {FullCalendar}  from 'vue-full-calendar'
-import "fullcalendar/dist/fullcalendar.css";
+import "fullcalendar/dist/fullcalendar.css"
 
 export default {
   name: 'Home',
@@ -84,11 +85,15 @@ export default {
   data(){
     return {
         is_mobile:false,
+        is_edit:false,
+        dialogTitle:'新建日程',
+        event:{},
         events: [{
           title: '事件内容',  // 事件内容
           start: '2022-05-25 09:00:00', // 事件开始时间
           end: '2022-05-26 12:00:00',   // 事件结束时间
-          color: 'rgba(9, 9, 9, 0.2)'       // 事件的显示颜色
+          color: 'rgba(9, 9, 9, 0.2)',       // 事件的显示颜色
+          editable:true
         }],
         config: {
           buttonText: { today: "今天", month: "月", week: "周", day: "日" },
@@ -96,10 +101,11 @@ export default {
           editable: true, //是否允许修改事件
           selectable: true,
           eventLimit: 4, //事件个数
-          allDaySlot: false, //是否显示allDay
+          allDaySlot: true, //是否显示allDay
           defaultView: "month", //显示默认视图
           eventClick: this.eventClick, //点击事件
           dayClick: this.dayClick, //点击日程表上面某一天
+          eventMouseover:this.eventMouseover
        },
        weather:[],
         dialogFormVisible: false,
@@ -113,6 +119,19 @@ export default {
     // 点击事件
      eventClick (event, jsEvent, pos) {
        console.log('eventClick', event, jsEvent, pos)
+       this.dialogTitle = '修改日程'
+       this.scheduleTitle = event.title
+       this.is_edit = true
+       this.event = event
+       if(!event.editable){
+         this.reset()
+         return false
+       }
+       if(!this.is_mobile){
+          this.dialogFormVisible=true
+        }
+        this.selectDate = [new Date(event.start.year(), event.start.month(), event.start.date(), event.start.hour(), event.start.minute()), new Date(event.end.year(), event.end.month(), event.end.date(), event.end.hour(), event.end.minute())]
+
      },
      // 点击当天
      dayClick (day, jsEvent) {
@@ -139,16 +158,27 @@ export default {
 
         let event_start_date = this.format2(this.selectDate[0].getTime())
         let event_end_date = this.format2(this.selectDate[1].getTime())
-        let event = {
-          title: this.scheduleTitle,  // 事件内容
-          start: event_start_date, // 事件开始时间
-          end: event_end_date,   // 事件结束时间
-          color: 'rgba(9, 9, 9, 0.2)'       // 事件的显示颜色
+        let title = this.scheduleTitle
+        if(!this.is_edit){
+          let event = {
+            title: title,  // 事件内容
+            start: event_start_date, // 事件开始时间
+            end: event_end_date,   // 事件结束时间
+            editable:true,
+            color: 'rgba(9, 9, 9, 0.2)'       // 事件的显示颜色
+
+          }
+          this.$refs.calendar.fireMethod('addEventSource',[event])
+        }else{
+          this.event.title = title
+          this.event.start = event_start_date
+          this.event.end = event_end_date
+          //this.$refs.calendar.fireMethod('removeEvents',[this._id])
+          this.$refs.calendar.fireMethod('updateEvent',this.event)
         }
-        this.events.push(event)
-        this.scheduleTitle = ''
+        this.reset()
      },
-     init (){
+    init (){
       this.$axios.get('weather').then(res => {
         //请求的数据存储在res.data 中
         let weather = res.data.data
@@ -158,6 +188,52 @@ export default {
         })
         this.weather = weather_list
       })
+      this.$axios.get('https://api.apihubs.cn/holiday/get?field=year,month,date,holiday,holiday_legal,holiday_recess&year=2022&holiday_recess=1&order_by=1&cn=1&size=50').then(res=>{
+        let holiday_list = res.data.data.list
+        let holiday_obj = {}
+        holiday_list.forEach(function(item){
+            let t = item.holiday_cn
+            if(!holiday_obj.hasOwnProperty(item.holiday_cn)){
+              holiday_obj[t] = [item]
+            }else{
+              holiday_obj[t].push(item)
+            }
+
+            
+        })
+         for(var obj in holiday_obj){
+          let start_date = holiday_obj[obj][0].date
+          let holiday_cn = holiday_obj[obj][0].holiday_cn
+          let end_date = holiday_obj[obj].pop().date
+          start_date = String(start_date).replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3")
+          end_date = String(end_date).replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3")
+          start_date = start_date
+          end_date = end_date 
+          let event = {
+            title: holiday_cn,  // 事件内容
+            start: start_date, // 事件开始时间
+            end: end_date,   // 事件结束时间
+            color: 'rgba(255, 100, 97, 0.5)',       // 事件的显示颜色
+            editable:false,
+            allDay:true
+          }
+          this.$refs.calendar.fireMethod('addEventSource',[event])
+         }
+         
+
+        
+        
+      })
+    },
+    cancelClick(){
+      this.dialogFormVisible = false
+      this.reset()
+    },
+    reset(){
+        this.scheduleTitle = ''
+        this.dialogTitle = '新建日程'
+        this.is_edit = false
+        this.event = {}
     },
     add0(m){return m<10?'0'+m:m },
     format(i){
@@ -199,7 +275,7 @@ export default {
         width: 3vh !important;
         margin: 0.2vh !important;
   }
-  .el-input{
+  .schedule{
     width: 30% !important;
     margin: 1vh !important;
   }

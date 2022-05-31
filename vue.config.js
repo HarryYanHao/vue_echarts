@@ -57,6 +57,16 @@ module.exports = {
       .options({ bypassOnDebug: true })
       .end()
     // ============压缩图片 end============
+
+	// ============jq start============
+    config.plugin('provide').use(webpack.ProvidePlugin, [{
+      $: 'jquery',
+      jquery: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
+    }])
+    // ============jq end============
+
   }
 
 }
