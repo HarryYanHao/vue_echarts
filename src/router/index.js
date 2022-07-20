@@ -7,9 +7,15 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'calendar',
     component: Home,
     meta:{title:'Home',keepAlive:true}
+  },
+  {
+    path: '/calendar',
+    name: 'calendar',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Calendar.vue'),
+    meta:{title:'Calendar',keepAlive:true}
   },
   {
     path: '/about',

@@ -12,6 +12,7 @@ import anime from 'animejs'
 import './assets/icon/iconfont.css'
 import VueParticles from 'vue-particles'
 import utils from './utils/utils'
+import i18n from './lang'
 
 
 
@@ -57,6 +58,7 @@ Viewer.setDefaults({
 
 new Vue({
   router,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
 
