@@ -1,13 +1,18 @@
 <template>
   <div class="Echarts">
+  	<BNav />
     <div id="main" style="width: 600px;height:400px;"></div>
     <div id="main1" style="width: 600px;height:400px;"></div>
   </div>
 </template>
 <script>
+import BNav from '@/components/BNav.vue'
 
 export default {
   name: 'Echarts',
+  components: {
+    BNav,
+  },
   methods:{
 		myEcharts(){
 		// 基于准备好的dom，初始化echarts实例

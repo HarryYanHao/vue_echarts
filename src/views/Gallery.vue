@@ -1,5 +1,6 @@
 <template>
   <div class="index" id="index">
+	<BNav />
     <h1>Harry's Gallery</h1>
     <Nav></Nav>
     <el-container>
@@ -28,9 +29,11 @@
 
 <script>
 import Nav from '@/components/Nav.vue'
+import BNav from '@/components/BNav.vue'
 export default {
 	components:{
-		Nav
+		Nav,
+		BNav
 	},
 	data() {
 	return {

@@ -1,5 +1,6 @@
 <template>
 	<div class="about">
+    <BNav />
 		<h1>About Me</h1>
 		<Nav></Nav>
 		<el-container>
@@ -84,10 +85,12 @@
 </template>
 <script>
 import Nav from '@/components/Nav.vue'
+import BNav from '@/components/BNav.vue'
 	export default{
 		name: 'About',
 		components:{
-			Nav
+			Nav,
+      BNav
 		},
 		data() {
 			return {

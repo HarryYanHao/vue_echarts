@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'calendar',
+    name: 'home',
     component: Home,
     meta:{title:'Home',keepAlive:true}
   },
@@ -35,7 +35,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/ECharts.vue'),
     meta:{title:'ECharts',keepAlive:false}
   },
-   {
+  {
     path: '/gallery',
     name: 'Gallery',
     // route level code-splitting
@@ -43,6 +43,12 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Gallery.vue'),
     meta:{title:"Harry's Gallery",keepAlive:false}
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: ()=> import(/* webpackChunkName: "about" */ '../views/Test.vue'),
+    meta:{title:'Home',keepAlive:true}
   },
 ]
 

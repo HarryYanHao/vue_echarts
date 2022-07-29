@@ -1,7 +1,7 @@
 <template>
   <div class="calendar">
    <!--  <img alt="Vue logo" src="../assets/logo.png"> -->
-    <Nav></Nav>
+    <BNav />
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     
       <vue-particles
@@ -66,6 +66,7 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 import Nav from '@/components/Nav.vue'
+import BNav from '@/components/BNav.vue'
 import FlipClock from 'kuan-vue-flip-clock'
 import  {FullCalendar}  from 'vue-full-calendar'
 import "fullcalendar/dist/fullcalendar.css"
@@ -75,6 +76,7 @@ export default {
   components: {
     // HelloWorld,
     Nav,
+    BNav,
     FlipClock,
     FullCalendar
   },
