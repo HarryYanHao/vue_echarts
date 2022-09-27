@@ -17,6 +17,7 @@
       
 			<div id = 'swiper1' class='main-content'>
 				<BSwiper/>
+<<<<<<< Updated upstream
 			</div>
 			<div id = 'swiper2' class='main-content'>
 		<b-card-group deck>
@@ -61,7 +62,13 @@
   
 
   
+=======
+>>>>>>> Stashed changes
 			</div>
+      <div id = 'step1'>
+        <BStep/>
+      </div>
+      
 		</el-main>
 		<el-footer>{{$t("admin")}}</el-footer>
 	</el-container>
@@ -69,14 +76,14 @@
 </template>
 <script>
 	import BNav from '@/components/BNav.vue'
-	import Swiper from '@/components/Swiper.vue'
 	import BSwiper from '@/components/BSwiper.vue'
+  import BStep from '@/components/BStep.vue'
 	export default {
 	name: 'Index',
 	components: {
 		BNav,
-		Swiper,
 		BSwiper,
+    BStep,
 	},
 	data(){
 		return{
@@ -135,17 +142,5 @@
 	.el-container{
 		overflow: hidden
 	}
-  .main-content{
-    background-color: #CCC;
-  }
-  #swiper2 .card-deck{
-    padding: 0.5rem
-  }
-  @media(min-width:576px) .card-deck .card{
-    margin-right: 25px;
-    margin-bottom: 10px;
-    margin-left: 25px;
-    margin-top: 25px;
-  }
 	
 </style>

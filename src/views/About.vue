@@ -35,40 +35,51 @@
   			</el-header>
   				
   			<el-main>
-  				<div class="block2" :style="block2">
-  					<transition enter-active-class ='animate__animated animate__fadeInUp animate__slower'>
-  						<el-image v-show="main_show" :src="require('../assets/block2.jpeg')" ></el-image>
-  					</transition>
-  						<div :style="block2_div_style">
-  							<h4 style="text-align:left">HELLO</h4>
-  							<h5 style="text-align:left">关于项目的介绍</h5>
-  							<transition enter-active-class ='animate__animated animate__fadeInRight animate__slower'>
-  								<p style = "text-align:left" v-show="main_show">这是一个基于vue前端框架构建的项目，是Harry用来学习前端知识的一个练手的小项目。页面展示的所有内容都是由他本人完成～</p>
-  							</transition>
-  							<router-link to="/gallery"><el-button type="primary">Go Gallery > </el-button></router-link>
-  						</div>    				
-  				</div>
-  				<div class="block1" :style="block1">
-						<transition enter-active-class ='animate__animated animate__fadeInDown animate__slower'>
-    						<el-image  v-show="main_show" :src="require('../assets/block1.jpeg')"></el-image>
-    					</transition>
-    					<div :style="block1_div_style">
-    						<h4 style="text-align:left">WHO AM I?</h4>
-    						<h5 style="text-align:left">我是Harry 一个默默无闻的PHPer</h5>
-    						<transition enter-active-class ='animate__animated animate__fadeInLeft animate__slower'>
-    							<p v-show="main_show" style="text-align:left">从事php后端开发，使用主流框架laravel，项目中数据持久化使用mysql以及redis。消息队列使用zmq，使用通信引擎swoole以及nodejs socket通信，web服务器为nginx，熟悉其配置。同时也在学习docker容器化部署以及vue前端</p>
-    						</transition>
-    						<el-button type="primary" @click = 'contactMe'>Contact Me > </el-button></router-link>
-
-    					</div>
-  				</div>
+  				<div class="block2">
+           <b-card  class="mb-3">
+            <b-row style="flex-direction: row-reverse;">
+              <b-col md="6">
+                <el-image  v-show="main_show" :src="require('../assets/block2.jpeg')"></el-image>
+              </b-col>
+              <b-col>
+                <b-card-text>
+                <h4>HELLO</h4>
+                <h5>关于项目的介绍</h5>
+                <transition enter-active-class ='animate__animated animate__fadeInRight animate__slower'>
+                  <p v-show="main_show">这是一个基于vue前端框架构建的项目，是Harry用来学习前端知识的一个练手的小项目。页面展示的所有内容都是由他本人完成～</p>
+                </transition>
+                <router-link to="/gallery"><el-button type="primary">Go Gallery > </el-button></router-link>
+                </b-card-text>
+              </b-col>
+            </b-row>
+          </b-card>
+          </div>
+  				<div class="block1">
+           <b-card  class="mb-3">
+            <b-row>
+              <b-col md="5">
+                <el-image  v-show="main_show" :src="require('../assets/block1.jpeg')"></el-image>
+              </b-col>
+              <b-col>
+                <b-card-text>
+               <h4>WHO AM I?</h4>
+                <h5>我是Harry 一个默默无闻的PHPer</h5>
+                <div class ='wow animate__animated animate__fadeInLeft animate__slower'>
+                  <p v-show="main_show">从事php后端开发，使用主流框架laravel，项目中数据持久化使用mysql以及redis。消息队列使用zmq，使用通信引擎swoole以及nodejs socket通信，web服务器为nginx，熟悉其配置。同时也在学习docker容器化部署以及vue前端</p>
+                </div>
+                <el-button type="primary" @click = 'contactMe'>Contact Me > </el-button></router-link>
+                </b-card-text>
+              </b-col>
+            </b-row>
+          </b-card>
+          </div>
   				<div class = "block3">
   					<div :style='block3_div_style'>
   						<h4 style="text-align:left">MY RESUME</h4>
   						<h5 style="text-align:left">个人总结</h5>
-  						<transition enter-active-class ='animate__animated animate__fadeInBottomRight animate__slower'>
+  						<div class ='wow animate__animated animate__fadeInBottomRight animate__slower'>
   							<p v-show="main_show" style="text-align:left">本人对待工作认真负责，待人真诚，善于沟通、协调。有较强的组织能力与团队精神；上进心强、勤于学习能不断进步自身的能力与综合素质。精通熟练计算机IT软硬件技术，对IT周边科技发展有浓厚兴趣；团队意识及适应能力强，抗压能力好，喜欢面对挑战迎难而上；注重生活条理化，工作规划化。在未来的工作生活中，我将以充沛的精力，刻苦钻研的精神来努力完成既定的工作任务，稳步提升自己的工作能力。</p>
-  						</transition>
+  						</div>
   						<el-button type="primary" @click = 'learnMore'>Learn More > </el-button></router-link>
   					</div>
   				</div>
@@ -86,6 +97,7 @@
 <script>
 import Nav from '@/components/Nav.vue'
 import BNav from '@/components/BNav.vue'
+import wow from "wowjs";
 	export default{
 		name: 'About',
 		components:{
@@ -98,41 +110,23 @@ import BNav from '@/components/BNav.vue'
 				show:false,
 				is_mobile:false,
 				avatarStyle:{},
-        block1:{
-          'display': '-webkit-flex',
-          'justify-content': 'center'
-        },
-        block2:{
-          'display': '-webkit-flex',
-          'justify-content': 'center',
-          'flex-direction': 'row-reverse'
-        },
-				block1_div_style:{
-					'width': '40vh',
-					'margin':'3vh 0 3vh 10vh',
-					'vertical-align':'top',
-				},
-				block2_div_style:{
-					'width': '40vh',
-					'margin':'3vh 10vh 3vh 0',
-					'vertical-align':'top',
-				},
-				block3_div_style:{
-    				'vertical-align': 'top',
-    				'position':'relative',
-    				'display':'inline-block',
-    				'width':'50%'
+        block3_div_style:{}
 
-				},
 			}
 		},
 		mounted() {
 			this.main_show = true
 			this.is_mobile = this.$utils.isMobile();
 			if(this.is_mobile){
-				this.block1 = this.block2  = {}
-				this.block1_div_style = this.block2_div_style = this.block3_div_style = {'margin':'1vh 3vh'}
+				 this.block3_div_style = {'margin':'1vh 3vh'}
 			}
+      new wow.WOW().init({//新建实列
+      boxClass: 'wow',//class名字
+      animateClass: 'animate__animated',//animateclass动画库类名,和当前animate动画库决定
+      offset: 0,//到元素距离触发动画（当默认为0）
+      mobile: true,//在移动设备上触发动画（默认为true）
+      live: true//对异步加载的内容进行操作（默认为true）
+    })
 		},
 		methods:{
 			avatar_show(){
@@ -190,28 +184,38 @@ import BNav from '@/components/BNav.vue'
   .el-header, .el-footer {
     line-height: 3.5vh;
   }
+  .el-footer{
+    background-image: linear-gradient(-45deg, #213052,#304883);
+  }
   .el-main{
   	height: 75vh;
   	font-size:1rem;
+    height: 100%;
+    overscroll-behavior: none;
   }
   .head_info div i{
   	margin-left: 1rem;
   }
-  .block1 div:nth-child(1) {
-  	height: 25vh
-  }
-  .block2 div:nth-child(1){
-  	height: 25vh
-  }
-  .block1 div{
-  	display: inline-block;
-  }
-  .block2 div{
-  	display: inline-block;
-  }
+
   .el-footer  span{
   	margin-right: 0.5vh;
   }
+  .col{
+    display: flex;
+    align-items: center;
+  }
+  .about{
+    background-color: #CCC;
+  }
+  .block2{
+    box-shadow: 10px -10px 5px #888888;
+  }
+  .block1{
+    box-shadow: -10px 10px 5px #888888;
+  }
+  
+  
+  
 
 
   
