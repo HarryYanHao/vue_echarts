@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
-    meta:{title:'Home',keepAlive:true}
+    meta:{title:'Home',keepAlive:false}
   },
   {
     path: '/calendar',

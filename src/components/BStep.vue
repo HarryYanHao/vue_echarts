@@ -4,26 +4,56 @@
       <b-col sm="2" class="mt-4">
         <div class="block" style="height:100%">
           <el-timeline>
-            <span @click="timelineClick(1)">
-              <el-timeline-item  type="primary" :class="{active:active === 1}">基本信息</el-timeline-item>
+            <span @click="timelineClick(1,'introduce')">
+              <el-timeline-item  type="primary" :class="{active:active === 1}">个人信息</el-timeline-item>
             </span>
-            <span @click="timelineClick(2)">
+            <span @click="timelineClick(2,'skill')">
               <el-timeline-item :class="{active:active === 2}">专业技能</el-timeline-item>
             </span>
-            <span @click="timelineClick(3)" :class="{active:active === 3}">
-              <el-timeline-item>个人经历</el-timeline-item>
+            <span @click="timelineClick(3,'experience')" :class="{active:active === 3}">
+              <el-timeline-item>项目经历</el-timeline-item>
             </span>
-            <span @click="timelineClick(4)" :class="{active:active === 4}">
+            <span @click="timelineClick(4,'stage')" :class="{active:active === 4}">
               <el-timeline-item>作品展示</el-timeline-item>
             </span>
           </el-timeline>
         </div>
       </b-col>
       <b-col sm="10">
-        <div class="introduce" :class="{active:active === 1}">
-          <p>基本信息</p>
+        <div class="introduce" id="introduce">
+          <div>
+            <el-divider content-position="center">基本信息</el-divider>
+            <span>Harry</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>男</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>29</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>深圳</span>
+            <el-divider content-position="center"><i class="el-icon-mobile-phone"></i></el-divider>
+            <span> (+86) 17722832841 </span>
+            <el-divider direction="vertical"></el-divider>
+            <span> harry.yan@xuncetech.com </span>
+            <el-divider direction="vertical"></el-divider>
+            <span> 51800 </span>
+            <el-divider content-position="center"><i class="el-icon-school"></i></el-divider>
+            <span>吉林大学珠海科技学院</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>计算机科学与技术</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>2015级</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>学士</span>
+            <el-divider content-position="center"><i class="el-icon-office-building"></i></el-divider>
+            <span>前后端全栈工程师</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>迅策科技有限公司</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>6+</span>
+
+          </div>
         </div>
-        <div class="skill" :class="{active:active === 2}" >
+        <div class="skill" id="skill">
           <el-progress class="mt-2" :text-inside="true" :stroke-width="24" :percentage="pph" color="blueviolet" :format="format"></el-progress>
           <el-progress class="mt-2" :text-inside="true" :stroke-width="24" :percentage="pv" status="success" :format="format"></el-progress>
           <el-progress class="mt-2" :text-inside="true" :stroke-width="24" :percentage="pc" :format="format"></el-progress>
@@ -42,11 +72,55 @@
             <i class="iconfont icon-redis"></i>
           </p>
         </div>
-        <div class="introduce" :class="{active:active === 3}">
-          <p>个人经历</p>
+        <div class="experience" id="experience">
+          <div class="experience_title">
+            <span>迅策资产管理系统</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>迅策科技</span>
+          </div>
+          <div class="experience_contents">
+            <p>
+              1.项目概况：后台系统主要由API模块，脚本任务模块，数据模块组成。整套系统对应不同的用户部署在券商的私有服务器上，数据服务基于Mysql和Redis，我们服务的调用方式都是基于HTTP连接和WebSocket推送。
+            </p>
+            <p>
+              2.参与项目：oms负责资管系统提供数据接口，bms负责提供底层账户信息，以及报表数据，rms提供风控管理，ipb指令管理，uds组负责处理上下行数据 oms通过curl调用和rpc接口与其他系统紧密结合或使用websocket推送行情以及旁路数据。
+            </p>
+            <p>
+              3.我的责任：前期了解项目，参与ipb组随迭代版本参与开发工作，分析版本需求，输出接口文档，中期参与开发编码。主要实现的模块和功能有，websocket消息推送，指令下单，修改功能，，委托管理功能，解析数据，脚本处理数据同步，数据分析功能以及报表。优化代码和数据库结构。后期主要定位线上问题，根据用户数据以及现场环境的现象分析bug原因，解决代码或用户使用问题
+            </p>
+            <p>
+            项目功能从单一逐渐丰富，代码逻辑清晰，接口耗时缩短，并发的异常情况得到控制。线上问题快速定位
+            </p>
+          </div>
+          <div class="experience_title">
+            <span>股神对对碰游戏平台</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>财智叁陆伍科技有限公司</span>
+          </div>
+          <div class="experience_contents">
+            <p>1.项目概况：微交易系统平台，金融娱乐化产品，管理后台</p>
+            <p>2.人员分工：php组负责管理后台页面展示，提供管理后台和用户前置的json数据接口，数据交互。
+              web组负责微信端用户入口，用户前置的页面的展示，调用php接口或websocket直接连接行情服务。
+              c++组负责提供交易服务数据和行情服务数据，php通过rpc接口获得数据，和使用kafka通知c++已修改的数据。
+              java组负责出入金与报表数据生成。
+            </p>
+            <p>3.我的责任：前期了解项目架构，参与架构设计讨论，框架技术的选型。中期参与php组与web组，前置微信相关功能、管理后台页面展示、数据交互、与交易行情服务交互的具体实现的编码，以及所需要使用到的数据库的结构的设计。后期参与bug修复，用户线上问题的处理，以及实现产品变更的需求。
+            </p>
+          </div>
+          <div class="experience_title">
+            <span>自适应官网</span>
+            <el-divider direction="vertical"></el-divider>
+            <span>深圳市南方风尚有限公司</span>
+          </div>
+          <div class="experience_contents">
+            <p>微信微官网搭建，PC站官网搭建。使用smarty模版引擎，提供api或输出页面缓存。服务器端优化方面：页面静态化，开启opcache编译压缩php代码，开启proxy_pass对服务器静态资源进行缓存。前端优化方面：静态资源cdn托管，图片压缩，使用雪碧图，使用懒加载。安全方面：对用户提交的数据进行验证，过滤非法字符，防止sql注入和xss攻击。
+            </p>
+          </div>
+
+        </div>
         </div> 
-        <div class="experience" :class="{active:active === 4}">
-          <div id = 'swiper2' class='main-content animate__animated animate__fadeInRight'>
+        <div class="stage" id="stage">
+          <div id = 'swiper2' class='wow main-content animate__animated animate__fadeInRight'>
         <b-card-group deck>
           <b-card bg-variant="dark" text-variant="white" img-alt="Image" img-top>
              <template v-slot:header>
@@ -94,6 +168,7 @@
 </template>
 
 <script>
+  import wow from 'wowjs'
   export default {
   name: 'BStep',
   components: {
@@ -110,7 +185,14 @@
     
   },
   mounted(){
-  
+    window.addEventListener('scroll',this.handleScroll,true)
+    new wow.WOW().init({//新建实列
+      boxClass: 'wow',//class名字
+      animateClass: 'animate__animated',//animateclass动画库类名,和当前animate动画库决定
+      offset: 0,//到元素距离触发动画（当默认为0）
+      mobile: true,//在移动设备上触发动画（默认为true）
+      live: true//对异步加载的内容进行操作（默认为true）
+    })
   },
   methods:{
     load(){
@@ -130,13 +212,9 @@
         return "php"
       }
     },
-    timelineClick(i){
-      this.active = i
-      if(i==2){
-        this.skillInit()
-      }else{
-        this.pp=this.pv=this.pc=this.pph=0
-      }
+    timelineClick(index,id){
+      this.active = index
+      this.swiperDown('#'+id)
       
     },
     skillInit(){
@@ -146,7 +224,63 @@
           this.pc=20
           this.pph=100
       }, 200);
-    }
+    },
+    handleScroll(){
+        //  对文档中某一处元素的scroll事件@scroll="handleScroll",则可使用e.target.scrollTop
+        //let scrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop)
+        //let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        let clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        //let introduce_offsetTop = document.getElementById('introduce').offsetTop  //元素距离顶部的高度
+        let introduce_offsetTop = document.querySelector('#introduce').getBoundingClientRect().top  //元素距离顶部的高度
+        let skill_offsetTop = document.querySelector('#skill').getBoundingClientRect().top  //元素距离顶部的高度
+        let experience_offsetTop = document.querySelector('#experience').getBoundingClientRect().top
+        let stage_offsetTop = document.querySelector('#stage').getBoundingClientRect().top
+        if(stage_offsetTop < clientHeight){
+          this.active = 4
+          return
+
+        }
+        else if(experience_offsetTop < clientHeight){
+          this.active = 3
+          return
+
+        }
+        else if (skill_offsetTop   < clientHeight) {
+            this.active = 2
+            this.skillInit()
+            return 
+        }
+        else if (introduce_offsetTop < clientHeight){
+          this.active = 1
+          return
+        }
+        
+      },
+      swiperDown(i){
+        // document.querySelector('#swiper2').scrollIntoView({
+        //  behavior: "smooth"
+        // }); 
+        this.sh = document.documentElement.scrollTop || document.body.scrollTop
+        this.scroll(document.querySelector(i), 100);
+      },
+    scroll(e, frame) {
+        var eTop = e.getBoundingClientRect().top; 
+        var eAmt = eTop / frame;  
+        var curTime = 0;
+        console.log(this.sh)
+        while (curTime < frame) {
+            curTime += 1;  
+              window.setTimeout(this.scrollH, curTime * (200 / frame) , eTop - ((frame - curTime) * eAmt)+this.sh);
+          }
+        },
+    scrollH(height) {
+        window.scrollTo({
+          top: height
+        })
+      },
+  },
+  destroyed(){
+    window.removeEventListener('scroll',this.handleScroll,true);
   }
 }
 </script>
@@ -157,6 +291,7 @@
     justify-content: space-between;
     height: 100%;
     flex-direction: column;
+    align-items: center;
   }
   /deep/.el-timeline-item__content{
     text-align: left;
@@ -166,10 +301,8 @@
   }
   .iconfont{
     font-size:24px;
-    margin: 1rem
-  }
-  .introduce , .skill, .experience{
-    display: none;
+    margin: 1rem;
+    color: #333;
   }
   .active{
     display: block
@@ -178,7 +311,7 @@
     background-color:rgb(33, 48, 82);
   }
   /deep/.active .el-timeline-item__content{
-    color: #2f3542;
+    color: #409EFF;
     font-family: bold;
     font-weight: 800;
   }
@@ -199,6 +332,24 @@
   }
   .row{
     background: #dfe4ea
+  }
+  .el-divider,.el-divider__text{
+    background-color: #70a1ff;
+    color:white;
+  }
+  .el-divider--horizontal{
+    width: 50%;
+    margin: 24px auto;
+  }
+  .experience_title{
+    text-align: left;
+  }
+  .experience_contents p{
+    font-weight: initial;
+    font-family: sans-serif;
+    color: #747d8c;
+    font-size: 14px;
+    text-align: left;
   }
   
 
