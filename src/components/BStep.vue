@@ -1,26 +1,29 @@
 <template>
   <b-container fluid>
     <b-row>
-      <b-col sm="2" class="mt-4">
+      <b-col sm="2" class="left mt-4">
         <div class="block" style="height:100%">
           <el-timeline>
-            <span @click="timelineClick(1,'introduce')">
-              <el-timeline-item  type="primary" :class="{active:active === 1}">个人信息</el-timeline-item>
+            <span @click="timelineClick(1,'introduce')" :class="{active:active === 1}" style="flex:1.5">
+              <el-timeline-item  type="primary">个人信息</el-timeline-item>
             </span>
-            <span @click="timelineClick(2,'skill')">
-              <el-timeline-item :class="{active:active === 2}">专业技能</el-timeline-item>
+            <span @click="timelineClick(2,'skill')" :class="{active:active === 2}" style="flex:1">
+              <el-timeline-item >专业技能</el-timeline-item>
             </span>
-            <span @click="timelineClick(3,'experience')" :class="{active:active === 3}">
+            <span @click="timelineClick(3,'experience')" :class="{active:active === 3}" style="flex:2.5">
               <el-timeline-item>项目经历</el-timeline-item>
             </span>
-            <span @click="timelineClick(4,'stage')" :class="{active:active === 4}">
+            <span @click="timelineClick(4,'stage')" :class="{active:active === 4}" style="flex:2">
               <el-timeline-item>作品展示</el-timeline-item>
+            </span>
+            <span @click="timelineClick(5,'resume')" :class="{active:active === 5}" style="flex:0.5">
+              <el-timeline-item>个人总结</el-timeline-item>
             </span>
           </el-timeline>
         </div>
       </b-col>
-      <b-col sm="10">
-        <div class="introduce" id="introduce">
+      <b-col sm="10" class="right mt-4">
+        <div class="introduce mb-4" id="introduce">
           <div>
             <el-divider content-position="center">基本信息</el-divider>
             <span>Harry</span>
@@ -53,7 +56,7 @@
 
           </div>
         </div>
-        <div class="skill" id="skill">
+        <div class="skill mb-4" id="skill">
           <el-progress class="mt-2" :text-inside="true" :stroke-width="24" :percentage="pph" color="blueviolet" :format="format"></el-progress>
           <el-progress class="mt-2" :text-inside="true" :stroke-width="24" :percentage="pv" status="success" :format="format"></el-progress>
           <el-progress class="mt-2" :text-inside="true" :stroke-width="24" :percentage="pc" :format="format"></el-progress>
@@ -72,7 +75,7 @@
             <i class="iconfont icon-redis"></i>
           </p>
         </div>
-        <div class="experience" id="experience">
+        <div class="experience mb-4" id="experience">
           <div class="experience_title">
             <span>迅策资产管理系统</span>
             <el-divider direction="vertical"></el-divider>
@@ -119,7 +122,7 @@
 
         </div>
         </div> 
-        <div class="stage" id="stage">
+        <div class="stage mb-4" id="stage">
           <div id = 'swiper2' class='wow main-content animate__animated animate__fadeInRight'>
         <b-card-group deck>
           <b-card bg-variant="dark" text-variant="white" img-alt="Image" img-top>
@@ -160,6 +163,11 @@
             </b-card-body>
           </b-card>
         </b-card-group>
+        </div>
+      </div>
+      <div class="resume mb-4" id="resume">
+        <div>
+          本人对待工作认真负责，待人真诚，善于沟通、协调。有较强的组织能力与团队精神；上进心强、勤于学习能不断进步自身的能力与综合素质。精通熟练计算机IT软硬件技术，对IT周边科技发展有浓厚兴趣；团队意识及适应能力强，抗压能力好，喜欢面对挑战迎难而上；注重生活条理化，工作规划化。在未来的工作生活中，我将以充沛的精力，刻苦钻研的精神来努力完成既定的工作任务，稳步提升自己的工作能力。
         </div>
       </div>
       </b-col>
@@ -235,7 +243,12 @@
         let skill_offsetTop = document.querySelector('#skill').getBoundingClientRect().top  //元素距离顶部的高度
         let experience_offsetTop = document.querySelector('#experience').getBoundingClientRect().top
         let stage_offsetTop = document.querySelector('#stage').getBoundingClientRect().top
-        if(stage_offsetTop < clientHeight){
+        let resume_offsetTop = document.querySelector('#resume').getBoundingClientRect().top
+        if(resume_offsetTop < clientHeight){
+          this.active=5
+          return
+        }
+        else if(stage_offsetTop < clientHeight){
           this.active = 4
           return
 
@@ -344,12 +357,16 @@
   .experience_title{
     text-align: left;
   }
-  .experience_contents p{
+  .experience_contents p,.resume div{
     font-weight: initial;
     font-family: sans-serif;
     color: #747d8c;
     font-size: 14px;
     text-align: left;
+  }
+  .right{
+    display: flex;
+    flex-direction: column;
   }
   
 

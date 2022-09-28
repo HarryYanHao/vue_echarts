@@ -30,7 +30,7 @@
      background-color: #fff;
      border-bottom: solid 0.2rem #409EFF;
   }
-  .nav-item:hover .nav-link,.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover{
+  .nav-item:hover .nav-link,.navbar-dark .navbar-nav, .navbar-dark .navbar-nav .nav-link:hover{
     color:#303133;
   }
   .navbar-brand{

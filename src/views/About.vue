@@ -2,7 +2,6 @@
 	<div class="about">
     <BNav />
 		<h1>About Me</h1>
-		<Nav></Nav>
 		<el-container>
   			<el-header height="15vh">
   				<div>
@@ -38,7 +37,7 @@
   				<div class="block2">
            <b-card  class="mb-3">
             <b-row style="flex-direction: row-reverse;">
-              <b-col md="6">
+              <b-col md="4">
                 <el-image  v-show="main_show" :src="require('../assets/block2.jpeg')"></el-image>
               </b-col>
               <b-col>
@@ -57,7 +56,7 @@
   				<div class="block1">
            <b-card  class="mb-3">
             <b-row>
-              <b-col md="5">
+              <b-col md="4">
                 <el-image  v-show="main_show" :src="require('../assets/block1.jpeg')"></el-image>
               </b-col>
               <b-col>
@@ -75,10 +74,10 @@
           </div>
   				<div class = "block3">
   					<div :style='block3_div_style'>
-  						<h4 style="text-align:left">MY RESUME</h4>
-  						<h5 style="text-align:left">个人总结</h5>
+  						<h4 style="text-align:left">CONTACT ME</h4>
+  						<h5 style="text-align:left">联系我</h5>
   						<div class ='wow animate__animated animate__fadeInBottomRight animate__slower'>
-  							<p v-show="main_show" style="text-align:left">本人对待工作认真负责，待人真诚，善于沟通、协调。有较强的组织能力与团队精神；上进心强、勤于学习能不断进步自身的能力与综合素质。精通熟练计算机IT软硬件技术，对IT周边科技发展有浓厚兴趣；团队意识及适应能力强，抗压能力好，喜欢面对挑战迎难而上；注重生活条理化，工作规划化。在未来的工作生活中，我将以充沛的精力，刻苦钻研的精神来努力完成既定的工作任务，稳步提升自己的工作能力。</p>
+  							<p v-show="main_show" style="text-align:left"></p>
   						</div>
   						<el-button type="primary" @click = 'learnMore'>Learn More > </el-button></router-link>
   					</div>
@@ -212,6 +211,15 @@ import wow from "wowjs";
   }
   .block1{
     box-shadow: -10px 10px 5px #888888;
+  }
+  .card-text p,.block3 p{
+    font-family: sans-serif;
+    color: #747d8c;
+    font-size: 14px;
+    text-align: left;
+  }
+  .card{
+    background-color: #E9EEF3;
   }
   
   
