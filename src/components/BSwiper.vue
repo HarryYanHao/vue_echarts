@@ -5,15 +5,13 @@
       :interval="0"
       controls
       background="#ababab"
-      img-width="1024"
-      img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
     >
       <!-- Text slides with image -->
       <b-carousel-slide>
       <template v-slot:img>
-        <b-img src="../assets/images/swiper2.jpg"  class= 'img-fluid w-100 tablet-hidden'></b-img>
-        <b-img src="../assets/images/swiper1.jpg"  class="img-fluid w-100 mobile-hidden"></b-img>
+        <b-img src="../assets/images/swiper2.jpg"  fluid class= "tablet-hidden"></b-img>
+        <b-img src="../assets/images/swiper1.jpg"  fluid class="mobile-hidden"></b-img>
       </template>
       <b-jumbotron class='swiper-text1' header="Welcome" lead="Harry's Home Page" style="background-color:transparent" header-level="3"> 
         <p>It's responsive theme UI</p>
@@ -33,14 +31,14 @@
       text="Nulla vitae elit libero, a pharetra augue mollis interdum."
       >
       <template v-slot:img>
-        <b-img src="../assets/images/swiper2.jpg"  class= 'img-fluid w-100 tablet-hidden'></b-img>
-        <b-img src="../assets/images/swiper1.jpg"  class="img-fluid w-100 mobile-hidden"></b-img>
+        <b-img src="../assets/images/swiper2.jpg"  fluid class= "tablet-hidden"></b-img>
+        <b-img src="../assets/images/swiper1.jpg"  fluid class="mobile-hidden"></b-img>
       </template>
        
       </b-carousel-slide>
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
       <b-carousel-slide caption="Hello world!" img-blank img-alt="Blank image">
-        <p>
+        <p >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
           a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
         </p>
@@ -87,6 +85,13 @@
   }
   .lead{
     font-size: 1.5rem
+  }
+  .carousel-item{
+    height: 60vh;
+  }
+  .carousel-item img{
+    width: 100%;
+    height: 100%;
   }
   @media only screen and (max-width: 768px) {
   .tablet-hidden{

@@ -202,6 +202,7 @@ import wow from "wowjs";
   .col{
     display: flex;
     align-items: center;
+    justify-content: space-around;
   }
   .about{
     background-color: #CCC;

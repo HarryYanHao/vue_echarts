@@ -25,6 +25,7 @@
 		</el-main>
 		<el-footer>{{$t("admin")}}</el-footer>
 	</el-container>
+	<el-backtop :bottom="60" :visibility-height="vbacktop"><i class="el-icon-arrow-up"></i></el-backtop>
   </div>
 </template>
 <script>
@@ -40,12 +41,13 @@
 	},
 	data(){
 		return{
-			
+			vbacktop:0
 		}
 		
 	},
 	mounted(){
-    console.log("mounted")
+    	this.vbacktop=document.querySelector('#resume').getBoundingClientRect().top
+    	console.log(this.vbacktop)
   	},
 	methods:{
     	swiperDown(){
@@ -77,11 +79,11 @@
   }
 	.el-main {
 		background-color: #E9EEF3;
-		color: #333;
-    font-weight: bold;
+		color: #2f3542;
+    	font-weight: bold;
 		text-align: center;
 		padding:0px;
-    font-family: sans-serif;
+    	font-family: sans-serif;
 	}
 	.el-container{
 		overflow: hidden

@@ -5,19 +5,19 @@
         <div class="block" style="height:100%">
           <el-timeline>
             <span @click="timelineClick(1,'introduce')" :class="{active:active === 1}" style="flex:1.5">
-              <el-timeline-item  type="primary">个人信息</el-timeline-item>
+              <el-timeline-item  type="primary"><span>个人信息</span></el-timeline-item>
             </span>
             <span @click="timelineClick(2,'skill')" :class="{active:active === 2}" style="flex:1">
-              <el-timeline-item >专业技能</el-timeline-item>
+              <el-timeline-item ><span>专业技能</span></el-timeline-item>
             </span>
             <span @click="timelineClick(3,'experience')" :class="{active:active === 3}" style="flex:2.5">
-              <el-timeline-item>项目经历</el-timeline-item>
+              <el-timeline-item><span>项目经历</span></el-timeline-item>
             </span>
             <span @click="timelineClick(4,'stage')" :class="{active:active === 4}" style="flex:2">
-              <el-timeline-item>作品展示</el-timeline-item>
+              <el-timeline-item><span>作品展示</span></el-timeline-item>
             </span>
             <span @click="timelineClick(5,'resume')" :class="{active:active === 5}" style="flex:0.5">
-              <el-timeline-item>个人总结</el-timeline-item>
+              <el-timeline-item><span v-html="resumeHtml"></span></el-timeline-item>
             </span>
           </el-timeline>
         </div>
@@ -166,8 +166,18 @@
         </div>
       </div>
       <div class="resume mb-4" id="resume">
+        <b-container fluid="lg">
+          <b-row class="resume_row">
+            <b-col md="4" class="wow main-content animate__animated animate__rotateInUpLeft">
+             <el-image :src="require('../assets/images/me.jpg')" class="resume_img"></el-image> 
+            </b-col>
+            <b-col md="8" class="wow main-content animate__animated animate__lightSpeedInRight">
+              本人对待工作认真负责，待人真诚，善于沟通、协调。有较强的组织能力与团队精神；上进心强、勤于学习能不断进步自身的能力与综合素质。精通熟练计算机IT软硬件技术，对IT周边科技发展有浓厚兴趣；团队意识及适应能力强，抗压能力好，喜欢面对挑战迎难而上；注重生活条理化，工作规划化。在未来的工作生活中，我将以充沛的精力，刻苦钻研的精神来努力完成既定的工作任务，稳步提升自己的工作能力。
+            </b-col>
+          </b-row>
+        </b-container>
         <div>
-          本人对待工作认真负责，待人真诚，善于沟通、协调。有较强的组织能力与团队精神；上进心强、勤于学习能不断进步自身的能力与综合素质。精通熟练计算机IT软硬件技术，对IT周边科技发展有浓厚兴趣；团队意识及适应能力强，抗压能力好，喜欢面对挑战迎难而上；注重生活条理化，工作规划化。在未来的工作生活中，我将以充沛的精力，刻苦钻研的精神来努力完成既定的工作任务，稳步提升自己的工作能力。
+          
         </div>
       </div>
       </b-col>
@@ -188,7 +198,8 @@
       pp:0,
       pph:0,
       pv:0,
-      pc:0
+      pc:0,
+      resumeHtml:"总结&#12288;&#12288;"
     }
     
   },
@@ -222,7 +233,7 @@
     },
     timelineClick(index,id){
       this.active = index
-      this.swiperDown('#'+id)
+      this.swiperDown('#'+id,-300)
       
     },
     skillInit(){
@@ -236,7 +247,7 @@
     handleScroll(){
         //  对文档中某一处元素的scroll事件@scroll="handleScroll",则可使用e.target.scrollTop
         //let scrollTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop)
-        //let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
         let clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
         //let introduce_offsetTop = document.getElementById('introduce').offsetTop  //元素距离顶部的高度
         let introduce_offsetTop = document.querySelector('#introduce').getBoundingClientRect().top  //元素距离顶部的高度
@@ -244,26 +255,26 @@
         let experience_offsetTop = document.querySelector('#experience').getBoundingClientRect().top
         let stage_offsetTop = document.querySelector('#stage').getBoundingClientRect().top
         let resume_offsetTop = document.querySelector('#resume').getBoundingClientRect().top
-        if(resume_offsetTop < clientHeight){
+        if(resume_offsetTop - clientHeight < 0 ){
           this.active=5
           return
         }
-        else if(stage_offsetTop < clientHeight){
+        else if(stage_offsetTop - clientHeight <  0 ){
           this.active = 4
           return
 
         }
-        else if(experience_offsetTop < clientHeight){
+        else if(experience_offsetTop - clientHeight < 0){
           this.active = 3
           return
 
         }
-        else if (skill_offsetTop   < clientHeight) {
+        else if (skill_offsetTop  - clientHeight < 0) {
             this.active = 2
             this.skillInit()
             return 
         }
-        else if (introduce_offsetTop < clientHeight){
+        else if (introduce_offsetTop - clientHeight < 0 ){
           this.active = 1
           return
         }
@@ -283,7 +294,7 @@
         console.log(this.sh)
         while (curTime < frame) {
             curTime += 1;  
-              window.setTimeout(this.scrollH, curTime * (200 / frame) , eTop - ((frame - curTime) * eAmt)+this.sh);
+              window.setTimeout(this.scrollH, curTime * (200 / frame) , eTop - ((frame - curTime) * eAmt)+this.sh );
           }
         },
     scrollH(height) {
@@ -323,7 +334,7 @@
   /deep/.active .el-timeline-item__node{
     background-color:rgb(33, 48, 82);
   }
-  /deep/.active .el-timeline-item__content{
+  /deep/.active .el-timeline-item__content span{
     color: #409EFF;
     font-family: bold;
     font-weight: 800;
@@ -331,17 +342,6 @@
 
   #swiper2 .card-deck{
     padding: 0.5rem
-  }
-  @media(min-width:576px) .card-deck .card{
-    margin-right: 25px;
-    margin-bottom: 10px;
-    margin-left: 25px;
-    margin-top: 25px;
-  }
-
-  .card-deck {
-    margin-right: 0;
-    margin-left: 0;
   }
   .row{
     background: #dfe4ea
@@ -364,10 +364,36 @@
     font-size: 14px;
     text-align: left;
   }
+  .resume div{
+    text-align: left;
+    color: #2f3542;
+    font-weight:500;
+  }
   .right{
     display: flex;
     flex-direction: column;
   }
+  /deep/.el-timeline-item__content span:first-child{
+    white-space: pre;
+  }
+    @media (min-width: 576px) and (max-width: 768px) {
+    .card-deck{
+      display: block;
+    }
+    .card-deck .card {
+      margin-bottom: 15px;
+    }
+  }
+  .resume_row{
+    align-items: center;
+  }
+  .resume_img{
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+    border-bottom-left-radius: 3rem;
+    border-bottom-right-radius: 3rem
+  }
+  
   
 
 </style>
