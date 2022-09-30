@@ -17,6 +17,7 @@ import VueParticles from 'vue-particles'
 import utils from './utils/utils'
 import i18n from './lang'
 import './assets/style/global.css'
+import '@/assets/fonts/font.css'
 
 
 

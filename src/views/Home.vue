@@ -18,12 +18,12 @@
 			<div id = 'swiper1' class='main-content'>
 				<BSwiper/>
 			</div>
-      <div id = 'step1'>
+      <div id = 'step1' ref="step1">
         <BStep ref="bstep"/>
       </div>
       
 		</el-main>
-		<el-footer>{{$t("admin")}}</el-footer>
+		<el-footer id="footer">{{$t("admin")}}</el-footer>
 	</el-container>
 	<el-backtop :bottom="60" :visibility-height="vbacktop"><i class="el-icon-arrow-up"></i></el-backtop>
   </div>
@@ -46,13 +46,14 @@
 		
 	},
 	mounted(){
-    	this.vbacktop=document.querySelector('#resume').getBoundingClientRect().top
+		let clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    	this.vbacktop=document.querySelector('#footer').getBoundingClientRect().top - clientHeight
     	console.log(this.vbacktop)
   	},
 	methods:{
     	swiperDown(){
       		this.$refs.bstep.swiperDown('#swiper1');
-    	}
+    	},
 	},
   deactivated(){
     this.$destroy()

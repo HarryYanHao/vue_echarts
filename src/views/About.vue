@@ -73,22 +73,54 @@
           </b-card>
           </div>
   				<div class = "block3">
-  					<div :style='block3_div_style'>
-  						<h4 style="text-align:left">CONTACT ME</h4>
-  						<h5 style="text-align:left">联系我</h5>
-  						<div class ='wow animate__animated animate__fadeInBottomRight animate__slower'>
-  							<p v-show="main_show" style="text-align:left"></p>
-  						</div>
-  						<el-button type="primary" @click = 'learnMore'>Learn More > </el-button></router-link>
-  					</div>
+            <b-container fluid="md">
+              <div>
+                <h4 style="text-align:left">CONTACT ME</h4>
+                <h5 style="text-align:left">联系我</h5>
+              </div>        
+              <el-divider></el-divider>
+              <b-row class="contact">
+                <b-col style="flex:2">
+                  <i class="iconfont icon-shouji"></i>
+                  <span>(+86)17722832841</span>
+                </b-col>
+                <b-col style="flex:1">
+                  <el-popover
+                    placement="top"
+                    width="300"
+                    trigger="hover"
+                    >
+                    <el-image :src="require('../assets/images/contactme2.jpg')"></el-image>
+                    <div slot="reference" style="display:flex;flex-direction:column;">
+                      <i class="iconfont icon-weixin" ></i><span>YH_star</span>
+                    </div>
+                  </el-popover>
+                </b-col>
+                <b-col style="flex:2">
+                  <i class="iconfont icon-youxiang"></i>
+                  <span>harry.yan@xuncetech.com</span>
+                </b-col>
+                <b-col style="flex:1">
+                  <el-popover
+                    placement="top"
+                    width="300"
+                    trigger="hover"
+                    >
+                    <el-image :src="require('../assets/images/contactme1.jpg')"></el-image>
+                    <div slot="reference" style="display:flex;flex-direction:column;">
+                      <i class="iconfont icon-weibo"></i>
+                      <span>阿狗Harry</span>
+                    </div>
+                  </el-popover>
+                </b-col>
+              </b-row>
+            </b-container>
+
   				</div>
   				
   		</el-main>
   			<el-footer id = "a1">
-  				<i class="iconfont icon-qq"></i><span>393464654</span>
-  				<i class="iconfont icon-weibo"></i><span>阿狗Harry</span>
-  				<i class="iconfont icon-shouji"></i><span>17722832841</span>
-  				<i class="iconfont icon-youxiang"></i><span>harry.yan@xuncetech.com</span>
+  				
   			</el-footer>
 		</el-container>
   </div>
@@ -203,6 +235,7 @@ import wow from "wowjs";
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: column;
   }
   .about{
     background-color: #CCC;
@@ -214,15 +247,28 @@ import wow from "wowjs";
     box-shadow: -10px 10px 5px #888888;
   }
   .card-text p,.block3 p{
-    font-family: sans-serif;
+    font-family: 'dream';
     color: #747d8c;
-    font-size: 14px;
+    font-size: 1.5rem;
     text-align: left;
+  }
+  .block3 i{
+    font-size: 2em;
+
+  }
+  .block3 span{
+    font-weight: bold;
   }
   .card{
     background-color: #E9EEF3;
   }
-  
+  .el-divider--horizontal{
+    margin-top: 0;
+    background-color: #a4b0be;
+  }
+  .contact div:hover{
+    color: #1e90ff;
+  }
   
   
 
