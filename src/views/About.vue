@@ -38,7 +38,7 @@
            <b-card  class="mb-3">
             <b-row style="flex-direction: row-reverse;">
               <b-col md="4">
-                <el-image  v-show="main_show" :src="require('../assets/block2.jpeg')"></el-image>
+                <el-image  v-show="main_show" :src="require('../assets/images/block2.jpeg')"></el-image>
               </b-col>
               <b-col>
                 <b-card-text>
@@ -57,7 +57,7 @@
            <b-card  class="mb-3">
             <b-row>
               <b-col md="4">
-                <el-image  v-show="main_show" :src="require('../assets/block1.jpeg')"></el-image>
+                <el-image  v-show="main_show" :src="require('../assets/images/block1.jpeg')"></el-image>
               </b-col>
               <b-col>
                 <b-card-text>
@@ -120,7 +120,7 @@
   				
   		</el-main>
   			<el-footer id = "a1">
-  				
+  				<Footer />
   			</el-footer>
 		</el-container>
   </div>
@@ -128,12 +128,14 @@
 <script>
 import Nav from '@/components/Nav.vue'
 import BNav from '@/components/BNav.vue'
+import Footer from '@/components/Footer.vue'
 import wow from "wowjs";
 	export default{
 		name: 'About',
 		components:{
 			Nav,
-      BNav
+      BNav,
+      Footer
 		},
 		data() {
 			return {
@@ -271,6 +273,9 @@ import wow from "wowjs";
   }
   h5:first-letter{
     color:#409EFF;
+  }
+  .row{
+    align-items: center;
   }
   
   

@@ -6,5 +6,6 @@ const zh = {
         zh: '中文',
         en: 'English',
     },
+    copyright:'Copyright © 2022 Harry. All rights reserved.'
 }
 export default zh;

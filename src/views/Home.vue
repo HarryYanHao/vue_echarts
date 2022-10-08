@@ -23,7 +23,7 @@
       </div>
       
 		</el-main>
-		<el-footer id="footer">{{$t("admin")}}</el-footer>
+		<el-footer id="footer"><Footer /></el-footer>
 	</el-container>
 	<el-backtop :bottom="60" :visibility-height="vbacktop"><i class="el-icon-arrow-up"></i></el-backtop>
   </div>
@@ -31,13 +31,15 @@
 <script>
 	import BNav from '@/components/BNav.vue'
 	import BSwiper from '@/components/BSwiper.vue'
-  import BStep from '@/components/BStep.vue'
+  	import BStep from '@/components/BStep.vue'
+  	import Footer from '@/components/Footer.vue'
 	export default {
 	name: 'Index',
 	components: {
 		BNav,
 		BSwiper,
-    BStep,
+    	BStep,
+    	Footer
 	},
 	data(){
 		return{

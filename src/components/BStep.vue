@@ -166,11 +166,11 @@
       <div class="resume mb-4" id="resume">
         <b-container fluid="lg">
           <b-row class="resume_row">
-            <b-col md="4" class="wow main-content animate__animated animate__rotateInUpLeft">
-             <el-image :src="require('../assets/images/me.jpg')" class="resume_img"></el-image> 
-            </b-col>
             <b-col md="8" class="wow main-content animate__animated animate__lightSpeedInRight">
               本人对待工作认真负责，待人真诚，善于沟通、协调。有较强的组织能力与团队精神；上进心强、勤于学习能不断进步自身的能力与综合素质。精通熟练计算机IT软硬件技术，对IT周边科技发展有浓厚兴趣；团队意识及适应能力强，抗压能力好，喜欢面对挑战迎难而上；注重条理和规划。在未来的工作生活中，我将以充沛的精力，刻苦钻研的精神来努力完成既定的工作任务，稳步提升自己的工作能力。
+            </b-col>
+            <b-col md="4" class="wow main-content animate__animated animate__rotateInUpLeft">
+             <el-image :src="require('../assets/images/me.png')" class="resume_img"></el-image> 
             </b-col>
           </b-row>
         </b-container>
