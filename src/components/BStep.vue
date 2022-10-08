@@ -4,19 +4,19 @@
       <b-col sm="2" class="left mt-4">
         <div class="block" style="height:100%">
           <el-timeline>
-            <span @click="timelineClick(1,'introduce')" :class="{active:active === 1}" style="flex:1.5">
+            <span @click="timelineClick(1,'introduce')" :class="{active:active === 1}" :style="{flex:flexIntroduce}">
               <el-timeline-item  type="primary"><span>个人信息</span></el-timeline-item>
             </span>
-            <span @click="timelineClick(2,'skill')" :class="{active:active === 2}" style="flex:1">
+            <span @click="timelineClick(2,'skill')" :class="{active:active === 2}" :style="{flex:flexSkill}">
               <el-timeline-item ><span>专业技能</span></el-timeline-item>
             </span>
-            <span @click="timelineClick(3,'experience')" :class="{active:active === 3}" style="flex:2.5">
+            <span @click="timelineClick(3,'experience')" :class="{active:active === 3}" :style="{flex:flexExperience}">
               <el-timeline-item><span>项目经历</span></el-timeline-item>
             </span>
-            <span @click="timelineClick(4,'stage')" :class="{active:active === 4}" style="flex:2">
+            <span @click="timelineClick(4,'stage')" :class="{active:active === 4}" :style="{flex:flexStage}">
               <el-timeline-item><span>作品展示</span></el-timeline-item>
             </span>
-            <span @click="timelineClick(5,'resume')" :class="{active:active === 5}" style="flex:0.5">
+            <span @click="timelineClick(5,'resume')" :class="{active:active === 5}" :style="{flex:flexResume}">
               <el-timeline-item><span v-html="resumeHtml"></span></el-timeline-item>
             </span>
           </el-timeline>
@@ -79,7 +79,7 @@
           <div class="experience_title">
             <span>迅策资产管理系统</span>
             <el-divider direction="vertical"></el-divider>
-            <span>迅策科技</span>
+            <span class="co">迅策科技</span>
           </div>
           <div class="experience_contents">
             <p>
@@ -98,7 +98,7 @@
           <div class="experience_title">
             <span>股神对对碰游戏平台</span>
             <el-divider direction="vertical"></el-divider>
-            <span>财智叁陆伍科技有限公司</span>
+            <span class="co">财智叁陆伍科技有限公司</span>
           </div>
           <div class="experience_contents">
             <p>1.项目概况：微交易系统平台，金融娱乐化产品，管理后台</p>
@@ -113,7 +113,7 @@
           <div class="experience_title">
             <span>自适应官网</span>
             <el-divider direction="vertical"></el-divider>
-            <span>深圳市南方风尚有限公司</span>
+            <span class="co">深圳市南方风尚有限公司</span>
           </div>
           <div class="experience_contents">
             <p>微信微官网搭建，PC站官网搭建。使用smarty模版引擎，提供api或输出页面缓存。服务器端优化方面：页面静态化，开启opcache编译压缩php代码，开启proxy_pass对服务器静态资源进行缓存。前端优化方面：静态资源cdn托管，图片压缩，使用雪碧图，使用懒加载。安全方面：对用户提交的数据进行验证，过滤非法字符，防止sql注入和xss攻击。
@@ -127,11 +127,10 @@
         <b-card-group deck>
           <b-card bg-variant="dark" text-variant="white" img-alt="Image" img-top>
              <template v-slot:header>
-              <b-img src="../assets/images/banner1.jpg" rounded="circle" style="width:100%"></b-img>
+              <b-img src="../assets/images/project2.png"  style="width:100%"></b-img>
               </template>
-          <b-card-body title="Title">
-            <b-card-text>This is a wider card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.</b-card-text>
+          <b-card-body title="迅鹰资产管理平台">
+            <b-card-text>资产管理平台，为私募客户服务，主要功能包含：集成下单，风控，综合报表，交易数据查询等功能。头部客户有景林高毅等。是迅策科技早期产品之一</b-card-text>
             </b-card-body>
       <!-- <template v-slot:footer>
         <small class="text-muted">Last updated 3 mins ago</small>
@@ -141,11 +140,11 @@
 
           <b-card bg-variant="dark" text-variant="white" img-alt="Image" img-top>
             <template v-slot:header>
-              <b-img src="../assets/images/banner2.jpg" rounded="circle" style="width:100%"></b-img>
+              <b-img src="../assets/images/project1.png"  style="width:100%"></b-img>
              </template>
-            <b-card-body title="Title">
+            <b-card-body title="桥银环保">
               <b-card-text>
-                This card has supporting text below as a natural lead-in to additional content.
+                上市公司官网搭建，包含前端页面自适应页面以及后台数据管理功能，南方风尚时期完成的作品。
               </b-card-text>
              </b-card-body>
           </b-card>
@@ -153,12 +152,11 @@
 
           <b-card bg-variant="dark" text-variant="white" img-alt="Image" img-top>
             <template v-slot:header>
-              <b-img src="../assets/images/banner3.png" rounded="circle" style="width:100%"></b-img>
+              <b-img src="../assets/images/project3.jpg"  style="width:100%"></b-img>
             </template>
-          <b-card-body title="Title">
+          <b-card-body title="股神对对碰游戏平台">
               <b-card-text>
-                This is a wider card with supporting text below as a natural lead-in to additional content.
-                This card has even longer content than the first to show that equal height action.
+                泛金融娱乐化产品，二元期权交易平台，因金融监管政策改变，此类平台被认为是违法违规的金融交易平台
               </b-card-text>
             </b-card-body>
           </b-card>
@@ -199,7 +197,12 @@
       pph:0,
       pv:0,
       pc:0,
-      resumeHtml:"总结&#12288;&#12288;"
+      resumeHtml:"总结&#12288;&#12288;",
+      flexIntroduce:0,
+      flexSkill:0,
+      flexStage:0,
+      flexExperience:0,
+      flexResume:0
     }
     
   },
@@ -212,6 +215,29 @@
       mobile: true,//在移动设备上触发动画（默认为true）
       live: true//对异步加载的内容进行操作（默认为true）
     })
+    let scrollHeight = document.querySelector('.right').scrollHeight
+    //let introduce_offsetTop = document.getElementById('introduce').offsetTop  //元素距离顶部的高度
+    let introduce_offsetTop = document.querySelector('#introduce').scrollHeight  //元素距离顶部的高度
+    let skill_offsetTop = document.querySelector('#skill').scrollHeight  //元素距离顶部的高度
+    let experience_offsetTop = document.querySelector('#experience').scrollHeight
+    let stage_offsetTop = document.querySelector('#stage').scrollHeight
+    let resume_offsetTop = document.querySelector('#resume').scrollHeight
+    this.flexIntroduce = introduce_offsetTop / scrollHeight * 10
+    this.flexSkill = skill_offsetTop / scrollHeight * 10
+    this.flexExperience = experience_offsetTop / scrollHeight * 10
+    this.flexStage = stage_offsetTop / scrollHeight * 10
+    this.flexResume = resume_offsetTop / scrollHeight * 10
+  },
+  computed:{
+      setTimeLineStyle() {
+        return function(cls){
+          this.next
+          let introduce_offsetTop = document.querySelector('#'+cls).getBoundingClientRect().top  //元素距离顶部的高度
+          console.log(introduce_offsetTop)
+        }
+        
+        
+      }
   },
   methods:{
     load(){
@@ -301,7 +327,7 @@
         window.scrollTo({
           top: height
         })
-      },
+      }
   },
   destroyed(){
     window.removeEventListener('scroll',this.handleScroll,true);
@@ -394,6 +420,10 @@
     border-top-right-radius: 3rem;
     border-bottom-left-radius: 3rem;
     border-bottom-right-radius: 3rem
+  }
+  .co{
+    color:#5352ed;
+    font-size: 0.9rem
   }
   
   

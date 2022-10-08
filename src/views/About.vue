@@ -269,6 +269,9 @@ import wow from "wowjs";
   .contact div:hover{
     color: #1e90ff;
   }
+  h5:first-letter{
+    color:#409EFF;
+  }
   
   
 
