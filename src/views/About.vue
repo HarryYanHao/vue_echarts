@@ -120,7 +120,7 @@
   				
   		</el-main>
   			<el-footer id = "a1">
-  				<Footer />
+  				
   			</el-footer>
 		</el-container>
   </div>
