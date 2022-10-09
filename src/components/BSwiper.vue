@@ -1,9 +1,9 @@
 <template>
+  <!-- controls -->
    <b-carousel
       id="carousel-1"
       v-model="slide"
       :interval="0"
-      controls
       background="#ababab"
       style="text-shadow: 1px 1px 2px #333;"
     >
@@ -13,9 +13,11 @@
         <b-img src="../assets/images/swiper2.jpg"  fluid class= "tablet-hidden"></b-img>
         <b-img src="../assets/images/swiper1.jpg"  fluid class="mobile-hidden"></b-img>
       </template>
-      <b-jumbotron class='swiper-text1' header="Welcome" lead="Harry's Home Page" style="background-color:transparent" header-level="3"> 
-        <p>It's responsive theme UI</p>
-        <b-button variant="primary" href="#">More</b-button>
+      <b-jumbotron class='swiper-text1' lead="Harry's Home Page" style="background-color:transparent" header-level="3"> 
+        <template v-slot:header>{{$t('homePage.swiper_title1')}}</template>
+        <template v-slot:lead>{{$t('homePage.swiper_title2')}}</template>
+        <p>{{$t('homePage.swiper_title3')}}</p>
+        <b-button variant="primary" href="#" @click="goStep()">{{$t('homePage.swiper_button1')}}</b-button>
       </b-jumbotron>
       <!-- <div class='swiper-text1'>
           <h1>Welcome</h1>
@@ -59,7 +61,9 @@
     
   },
   methods:{
-    
+    goStep(){
+      window.open(window.location.href,'harry', 'width=390,height=800');
+    },
   }
 }
 </script>

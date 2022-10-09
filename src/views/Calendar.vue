@@ -272,13 +272,5 @@ export default {
     width: 100%;
     position: absolute;
   }
-  .flip{
-       height: 10vh !important;
-        width: 3vh !important;
-        margin: 0.2vh !important;
-  }
-  .schedule{
-    width: 30% !important;
-    margin: 1vh !important;
-  }
+
 </style>

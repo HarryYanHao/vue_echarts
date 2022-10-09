@@ -7,11 +7,11 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav justified style='width:100%'>
-        <b-nav-item href="#" to='/' exact-active-class="active">Home</b-nav-item>
-        <b-nav-item href="#" to='/calendar' active-class="active">Calendar</b-nav-item>
-        <b-nav-item href="#" to='/echarts' active-class="active">ECharts</b-nav-item>
-        <b-nav-item href="#" to='/about' active-class="active">About</b-nav-item>
-        <b-nav-item href="#" to='/gallery' active-class="active">Gallery</b-nav-item>
+        <b-nav-item href="#" to='/' exact-active-class="active">{{$t('home')}}</b-nav-item>
+        <b-nav-item href="#" to='/calendar' active-class="active">{{$t('calendar')}}</b-nav-item>
+        <b-nav-item href="#" to='/echarts' active-class="active">{{$t('echarts')}}</b-nav-item>
+        <b-nav-item href="#" to='/about' active-class="active">{{$t('about')}}</b-nav-item>
+        <b-nav-item href="#" to='/gallery' active-class="active">{{$t('gallery')}}</b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>

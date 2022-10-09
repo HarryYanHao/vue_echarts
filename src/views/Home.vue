@@ -6,11 +6,15 @@
 		</el-header>
 		<el-main>
       <div style="position:relative">
-      <b-jumbotron fluid header="BootstrapVue" header-level=4 lead="Bootstrap v4 Components for Vue.js 2" style="background-image: url(/background.jpg); background-size: 100%; margin-bottom: 0;">
+      <b-jumbotron fluid header-level=4  style="background-image: url(/background.jpg); background-size: 100%; margin-bottom: 0;">
+      	<template v-slot:header>{{$t('homePage.home_title')}}</template>
+      	<template v-slot:lead>
+      		{{$t('homePage.home_title2')}}
+      	</template>
         <div>
-          <p>For more information visit website</p>
+          <p>{{$t('homePage.home_title3')}}</p>
         </div>
-        <b-button variant="primary" href="#">More Info</b-button>
+        <b-button variant="primary" href="#" @click="goStep">{{$t('homePage.home_button1')}}</b-button>
       </b-jumbotron>
       <i class="el-icon-arrow-down swiper-down" @click='swiperDown'></i>
     </div>
@@ -54,8 +58,13 @@
   	},
 	methods:{
     	swiperDown(){
-      		this.$refs.bstep.swiperDown('#swiper1');
+      		// this.$refs.bstep.swiperDown('#swiper1'); //此方法为调用子类方法
+      		this.$utils.swiperDown('#swiper1')
     	},
+    	goStep(){
+			// document.querySelector('#step1').scrollIntoView() //不平滑
+			this.$utils.swiperDown('#step1')//平滑滚动
+		},
 	},
   deactivated(){
     this.$destroy()

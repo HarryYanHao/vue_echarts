@@ -202,11 +202,21 @@
       flexSkill:0,
       flexStage:0,
       flexExperience:0,
-      flexResume:0
+      flexResume:0,
+      screenWidth: document.body.clientWidth
     }
     
   },
   mounted(){
+    const that = this
+    window.onresize = () => {
+      console.log('onresize')
+      return(()=>{
+        window.screenWidth = document.body.clientWidth
+        that.screenWidth = window.screenWidth
+        that.leftStepFlex()
+      })()
+    }
     window.addEventListener('scroll',this.handleScroll,true)
     new wow.WOW().init({//新建实列
       boxClass: 'wow',//class名字
@@ -215,18 +225,23 @@
       mobile: true,//在移动设备上触发动画（默认为true）
       live: true//对异步加载的内容进行操作（默认为true）
     })
-    let scrollHeight = document.querySelector('.right').scrollHeight
-    //let introduce_offsetTop = document.getElementById('introduce').offsetTop  //元素距离顶部的高度
-    let introduce_offsetTop = document.querySelector('#introduce').scrollHeight  //元素距离顶部的高度
-    let skill_offsetTop = document.querySelector('#skill').scrollHeight  //元素距离顶部的高度
-    let experience_offsetTop = document.querySelector('#experience').scrollHeight
-    let stage_offsetTop = document.querySelector('#stage').scrollHeight
-    let resume_offsetTop = document.querySelector('#resume').scrollHeight
-    this.flexIntroduce = introduce_offsetTop / scrollHeight * 10
-    this.flexSkill = skill_offsetTop / scrollHeight * 10
-    this.flexExperience = experience_offsetTop / scrollHeight * 10
-    this.flexStage = stage_offsetTop / scrollHeight * 10
-    this.flexResume = resume_offsetTop / scrollHeight * 10
+    this.leftStepFlex();
+  },
+  watch:{
+    screenWidth(val){
+        // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
+        if(!this.timer){
+            // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
+            this.screenWidth = val
+            this.timer = true
+            let that = this
+            setTimeout(function(){
+                // 打印screenWidth变化的值
+                console.log(that.screenWidth)
+                that.timer = false
+            },400)
+          }
+      }
   },
   computed:{
       setTimeLineStyle() {
@@ -259,7 +274,7 @@
     },
     timelineClick(index,id){
       this.active = index
-      this.swiperDown('#'+id,-300)
+      this.$utils.swiperDown('#'+id,-300)
       
     },
     skillInit(){
@@ -306,27 +321,18 @@
         }
         
       },
-      swiperDown(i){
-        // document.querySelector('#swiper2').scrollIntoView({
-        //  behavior: "smooth"
-        // }); 
-        this.sh = document.documentElement.scrollTop || document.body.scrollTop
-        this.scroll(document.querySelector(i), 100);
-      },
-    scroll(e, frame) {
-        var eTop = e.getBoundingClientRect().top; 
-        var eAmt = eTop / frame;  
-        var curTime = 0;
-        console.log(this.sh)
-        while (curTime < frame) {
-            curTime += 1;  
-              window.setTimeout(this.scrollH, curTime * (200 / frame) , eTop - ((frame - curTime) * eAmt)+this.sh );
-          }
-        },
-    scrollH(height) {
-        window.scrollTo({
-          top: height
-        })
+      leftStepFlex(){
+        let scrollHeight = document.querySelector('.right').scrollHeight
+        let introduce_offsetTop = document.querySelector('#introduce').scrollHeight  //元素距离顶部的高度
+        let skill_offsetTop = document.querySelector('#skill').scrollHeight  //元素距离顶部的高度
+        let experience_offsetTop = document.querySelector('#experience').scrollHeight
+        let stage_offsetTop = document.querySelector('#stage').scrollHeight
+        let resume_offsetTop = document.querySelector('#resume').scrollHeight
+        this.flexIntroduce = introduce_offsetTop / scrollHeight * 10
+        this.flexSkill = skill_offsetTop / scrollHeight * 10
+        this.flexExperience = experience_offsetTop / scrollHeight * 10
+        this.flexStage = stage_offsetTop / scrollHeight * 10
+        this.flexResume = resume_offsetTop / scrollHeight * 10
       }
   },
   destroyed(){

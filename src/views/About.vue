@@ -1,7 +1,7 @@
 <template>
 	<div class="about">
     <BNav />
-		<h1>About Me</h1>
+		<h1>{{$t('aboutPage.title')}}</h1>
 		<el-container>
   			<el-header height="15vh">
   				<div>
@@ -56,7 +56,7 @@
   				<div class="block1">
            <b-card  class="mb-3">
             <b-row>
-              <b-col md="4">
+              <b-col md="3">
                 <el-image  v-show="main_show" :src="require('../assets/images/block1.jpeg')"></el-image>
               </b-col>
               <b-col>
@@ -120,7 +120,7 @@
   				
   		</el-main>
   			<el-footer id = "a1">
-  				
+  				<Footer />
   			</el-footer>
 		</el-container>
   </div>
@@ -176,7 +176,8 @@ import wow from "wowjs";
 				
 			},
 			contactMe(){
-				document.querySelector('#a1').scrollIntoView() 
+				// document.querySelector('#a1').scrollIntoView() 
+        this.$utils.swiperDown('#a1')
 			},
 			avatarAnimate(){
 			this.avatarStyle = {}
@@ -214,7 +215,7 @@ import wow from "wowjs";
   .el-header{
   	font-size:0.9rem;
   }
-  .el-header, .el-footer {
+  .el-header {
     line-height: 3.5vh;
   }
   .el-footer{
@@ -271,7 +272,7 @@ import wow from "wowjs";
   .contact div:hover{
     color: #1e90ff;
   }
-  h5:first-letter{
+  h4:first-letter,h5:first-letter{
     color:#409EFF;
   }
   .row{
