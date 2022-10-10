@@ -74,9 +74,6 @@
 }
 </script>
 <style scoped>
-	.el-header, .el-footer {
-		background-image: linear-gradient(-45deg, #213052,#304883);
-	}
 	.el-menu.el-menu--horizontal{
 		background-image: linear-gradient(-45deg, #213052,#304883);	
 		border-bottom: none;

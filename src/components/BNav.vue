@@ -1,15 +1,15 @@
 <template>
   <div>
   <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top" :sticky=true>  
-    <b-navbar-brand href="#" >Harry</b-navbar-brand>
+    <b-navbar-brand href="#" @click="switchDebug()">Harry</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav justified style='width:100%'>
         <b-nav-item href="#" to='/' exact-active-class="active">{{$t('home')}}</b-nav-item>
-        <b-nav-item href="#" to='/calendar' active-class="active">{{$t('calendar')}}</b-nav-item>
-        <b-nav-item href="#" to='/echarts' active-class="active">{{$t('echarts')}}</b-nav-item>
+        <b-nav-item v-if="menu_debug" href="#" to='/calendar' active-class="active">{{$t('calendar')}}</b-nav-item>
+        <b-nav-item v-if="menu_debug" href="#" to='/echarts' active-class="active">{{$t('echarts')}}</b-nav-item>
         <b-nav-item href="#" to='/about' active-class="active">{{$t('about')}}</b-nav-item>
         <b-nav-item href="#" to='/gallery' active-class="active">{{$t('gallery')}}</b-nav-item>
       </b-navbar-nav>
@@ -51,6 +51,20 @@ export default {
   props: {
   
   },
+  mounted(){
+    console.log(this.$menu_debug)
+    this.menu_debug = this.$root.menu_debug
+  },
+  data(){
+    return{
+      menu_debug:false
+    }
+  },
+  methods:{
+    switchDebug(){
+      this.$root.menu_debug = this.menu_debug = !this.menu_debug
+    }
+  }
 
 
 }

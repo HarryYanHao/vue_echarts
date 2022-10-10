@@ -22,6 +22,9 @@ const zh = {
     },
     aboutPage:{
         title:'关于Harry'
+    },
+    galleryPage:{
+        title:'Harry的画廊' 
     }
     
 

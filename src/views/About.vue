@@ -218,9 +218,6 @@ import wow from "wowjs";
   .el-header {
     line-height: 3.5vh;
   }
-  .el-footer{
-    background-image: linear-gradient(-45deg, #213052,#304883);
-  }
   .el-main{
   	height: 75vh;
   	font-size:1rem;

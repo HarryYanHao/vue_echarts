@@ -22,6 +22,9 @@ const en = {
     },
     aboutPage:{
         title:'About Harry'
+    },
+    galleryPage:{
+        title:'Harry\'s Gallery' 
     }
     
 }

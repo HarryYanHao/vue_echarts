@@ -1,8 +1,7 @@
 <template>
-  <div class="index" id="index">
+  <div class="gallery" id="gallery">
 	<BNav />
-    <h1>Harry's Gallery</h1>
-    <Nav></Nav>
+    <h1>{{$t("galleryPage.title")}}</h1>
     <el-container>
 		<el-header>
 			<span>
@@ -12,7 +11,6 @@
 		</el-header>
 		<el-main>
 			<div class="infinite-list-wrapper" style="height:100vh;overflow:scroll" infinite-scroll-immediate="false">
-			<el-backtop target=".infinite-list-wrapper" ></el-backtop>
 			<ul class="list" v-infinite-scroll="load" style="padding-left: 0px">
 			<!-- <el-image ref="preview" v-for="(url,index) in urls" :key="index" :src="url" :preview-src-list="full_urls" lazy @click="onPreview(index)" :on-close="closeViewer"></el-image> -->
 			<viewer :images="imgs">
@@ -20,8 +18,12 @@
             <img v-for="(item,index) in imgs" :src="item.url" :key="index" :data-source="item.full_url">
         	</viewer>
 			</ul>
+			<el-backtop target=".infinite-list-wrapper":bottom="60" :right="20" @click="scrollUp()"><i class="el-icon-arrow-up"></i></el-backtop>
 		</div>
 		</el-main>
+		<el-footer>
+			<Footer/>
+		</el-footer>
 	</el-container>
 	</div>
 	
@@ -30,10 +32,11 @@
 <script>
 import Nav from '@/components/Nav.vue'
 import BNav from '@/components/BNav.vue'
+import Footer from '@/components/Footer.vue'
 export default {
 	components:{
-		Nav,
-		BNav
+		BNav,
+		Footer
 	},
 	data() {
 	return {
@@ -83,6 +86,10 @@ export default {
 		},
 		onPreview (){
 			console.log()
+		},
+		scrollUp(){
+			console.log('su')
+			this.$utils.swiperDown('#gallery')
 		}
 		
 
