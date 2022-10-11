@@ -52,7 +52,6 @@ export default {
   
   },
   mounted(){
-    console.log(this.$menu_debug)
     this.menu_debug = this.$root.menu_debug
   },
   data(){

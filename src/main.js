@@ -21,14 +21,12 @@ import './assets/style/global.css'
 import '@/assets/fonts/font.css'
 
 
-
 Vue.prototype.$echarts = echarts
 Vue.prototype.$axios = axios
 Vue.prototype.$viewer = Viewer
-Vue.prototype.$axios.defaults.baseURL = 'http://127.0.0.1:8188/'
+Vue.prototype.$axios.defaults.baseURL = window.baseurl
 Vue.prototype.$anime = anime
-Vue.prototype.$blog_host = 'http://127.0.0.1'
-Vue.prototype.$blog_port = '8889'
+Vue.prototype.$blogUrl = window.blogurl
 Vue.prototype.$utils = utils
 
 Vue.config.productionTip = false
@@ -60,6 +58,9 @@ Viewer.setDefaults({
   "url": "data-source"
   
 });
+
+
+
 
 
 

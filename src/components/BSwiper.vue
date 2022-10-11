@@ -1,9 +1,9 @@
 <template>
-  <!-- controls -->
    <b-carousel
       id="carousel-1"
       v-model="slide"
       :interval="0"
+      controls
       background="#ababab"
       style="text-shadow: 1px 1px 2px #333;"
     >
@@ -28,23 +28,27 @@
       </b-carousel-slide >
 
       <!-- Slides with custom text -->
-      <b-carousel-slide
+<!--       <b-carousel-slide
       caption="Second slide"
       text="Nulla vitae elit libero, a pharetra augue mollis interdum."
       >
       <template v-slot:img>
-        <b-img src="../assets/images/swiper2.jpg"  fluid class= "tablet-hidden"></b-img>
-        <b-img src="../assets/images/swiper1.jpg"  fluid class="mobile-hidden"></b-img>
+        <b-img src="../assets/blog2.png"  fluid class= "tablet-hidden"></b-img>
+        <b-img src="../assets/blog1.png"  fluid class="mobile-hidden"></b-img>
       </template>
        
-      </b-carousel-slide>
+      </b-carousel-slide> -->
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide caption="Hello world!" img-blank img-alt="Blank image">
-        <p >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
-          a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
-        </p>
-      </b-carousel-slide>
+       <b-carousel-slide img-blank img-alt="Blank image" background="#2f3542">
+        <div class="hero" style="height:100%">
+          <b-img src="../assets/hero.png" alt="hero" fluid style="width: 50%;height: 50%;display:none"></b-img> 
+          <h1 id="main-title">Harry's Blog</h1> 
+          <p class="description">
+            生活，成长
+          </p> 
+          <p class="action-button"><a @click="goBlog()" class="nav-link action-button">开启 →</a></p>
+        </div>
+      </b-carousel-slide> 
     </b-carousel>
 </template>
 
@@ -64,6 +68,10 @@
     goStep(){
       window.open(window.location.href,'harry', 'width=390,height=800');
     },
+    goBlog(){
+      console.log
+      window.open(this.$blogUrl,'_blank')
+    }
   }
 }
 </script>
@@ -91,23 +99,44 @@
     font-size: 1.5rem
   }
   .carousel-item{
-    height: 60vh;
+    height: 70vh;
   }
   .carousel-item img{
     width: 100%;
     height: 100%;
   }
+  .hero .action-button {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #fff;
+    background-color: #f33;
+    padding: 0.4rem 1.6rem;
+    border-radius: 4px;
+    transition: background-color 0.1s ease;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ff1414;
+  }
+  .hero{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   @media only screen and (max-width: 768px) {
   .tablet-hidden{
     display: none;
   }
 
 }
-@media only screen and (min-width: 769px){
+  @media only screen and (min-width: 769px){
   .mobile-hidden{
     display: none;
   }
 }
+
+
 
   
 
