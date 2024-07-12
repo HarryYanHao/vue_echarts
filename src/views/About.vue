@@ -17,7 +17,7 @@
 　　　　leave-active-class='animate__animated animate__backOutUp'
 	   v-on:before-enter="avatarAnimate"
 	   v-on:after-leave="avatarAnimate">
-  				 		<div v-show="show" style="display:inline-block" class = 'head_info' @click="show = !show">
+  				 		<div v-show="show"  class = 'head_info' @click="show = !show">
   				 			<div>
   				 				<i class="iconfont icon-name"></i><span>Harry</span><i class="iconfont icon-nansheng"></i><i class="iconfont icon-xuexiao"></i><span>吉林大学珠海学院</span>
   				 			</div>

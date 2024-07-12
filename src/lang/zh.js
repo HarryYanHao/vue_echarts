@@ -10,6 +10,7 @@ const zh = {
     echarts:'图表',
     about:'关于',
     gallery:'画廊',
+    test:'测试',
     homePage:{
     	home_title:'凡是过去，皆为序章。',
     	home_title2:'Vue2框架 + Bootstrap v4组件 + ElementUI组件库',

@@ -10,6 +10,7 @@ const en = {
     echarts:'Echarts',
     about:'About',
     gallery:'Gallery',
+    test:'Test',
     homePage:{
     	home_title:'What\'s past is prologue',
    		home_title2:'Vue.js 2 + Bootstrap v4 Components + ElementUI Components',

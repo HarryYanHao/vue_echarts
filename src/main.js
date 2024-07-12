@@ -69,7 +69,7 @@ new Vue({
   i18n,
   data(){
     return {
-      'menu_debug':false
+      'menu_debug':true
     }
   },
   render: h => h(App)
