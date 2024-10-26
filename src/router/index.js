@@ -50,6 +50,12 @@ const routes = [
     component: ()=> import(/* webpackChunkName: "about" */ '../views/Test.vue'),
     meta:{title:'Home',keepAlive:true}
   },
+  {
+    path: '/rss',
+    name: 'rss',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Rss.vue'),
+    meta:{title:"Harry's rss",keepAlive:true}
+  },
 ]
 
 const router = new VueRouter({

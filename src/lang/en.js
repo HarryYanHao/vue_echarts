@@ -11,6 +11,7 @@ const en = {
     about:'About',
     gallery:'Gallery',
     test:'Test',
+    rss:'RSS',
     homePage:{
     	home_title:'What\'s past is prologue',
    		home_title2:'Vue.js 2 + Bootstrap v4 Components + ElementUI Components',

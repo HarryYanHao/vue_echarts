@@ -69,7 +69,7 @@ import Nav from '@/components/Nav.vue'
 import BNav from '@/components/BNav.vue'
 import FlipClock from 'kuan-vue-flip-clock'
 import  {FullCalendar}  from 'vue-full-calendar'
-import "fullcalendar/dist/fullcalendar.css"
+import "../../node_modules/fullcalendar/dist/fullcalendar.css"
 
 export default {
   name: 'Calendar',

@@ -11,6 +11,7 @@ const zh = {
     about:'关于',
     gallery:'画廊',
     test:'测试',
+    rss:'订阅',
     homePage:{
     	home_title:'凡是过去，皆为序章。',
     	home_title2:'Vue2框架 + Bootstrap v4组件 + ElementUI组件库',

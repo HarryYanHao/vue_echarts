@@ -1,5 +1,5 @@
 # 基于Node.js的官方Docker镜像
-FROM node:14-alpine
+FROM node:18-alpine
  
 # 设置工作目录
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY package*.json ./
 RUN npm install -g @vue/cli-service
 
 # 安装项目依赖
-# RUN npm install -save-dev
+RUN npm install
  
 # 复制项目文件和目录到工作目录
 COPY . /app
@@ -21,4 +21,4 @@ COPY . /app
 EXPOSE 8088
  
 # 运行Vue.js开发服务器
-#CMD ["npm", "run", "serve"]
+CMD ["npm", "run", "serve"]
